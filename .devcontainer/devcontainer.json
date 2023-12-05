@@ -1,0 +1,28 @@
+{
+  "name": "FastApi",
+  "dockerFile": "Dockerfile",
+  "forwardPorts": [
+    8000
+  ],
+  "hostRequirements": {
+    "cpus": 1
+  },
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "python3 -m pip install -r requirements.txt",
+  "postStartCommand": "uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --log-level debug",
+  "customizations": {
+    "codespaces": {
+      "openFiles": []
+    },
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "ms-python.flake8",
+        "ms-python.isort",
+        "pkief.material-icon-theme",
+        "github.copilot"
+      ]
+    }
+  }
+}
