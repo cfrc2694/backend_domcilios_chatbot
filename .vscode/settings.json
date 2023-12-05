@@ -17,7 +17,7 @@
     // Max line length black
     "black-formatter.args": [
       "--line-length",
-      "100"
+      "79"
     ],
     // Max line length flake
     "flake8.args": [
