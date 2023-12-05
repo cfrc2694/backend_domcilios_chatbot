@@ -1,7 +1,7 @@
 """ FastAPI main module """
-import json
 import os
 
+from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
@@ -9,14 +9,14 @@ from .helpers import DBHelper, extract_session_id, get_str_from_food_dict
 
 app = FastAPI()
 
-MYSQL_SECRETS = os.environ.get("MYSQL")
-MYSQL_SECRETS = json.loads(MYSQL_SECRETS)
+
+load_dotenv()  # carga las variables de entorno desde el archivo .env
 
 db_helper = DBHelper(
-    host=MYSQL_SECRETS["host"],
-    user=MYSQL_SECRETS["user"],
-    password=MYSQL_SECRETS["password"],
-    database=MYSQL_SECRETS["database"],
+    host=os.getenv("MYSQL_HOST"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    database=os.getenv("MYSQL_DATABASE"),
 )
 
 inprogress_orders = {}
